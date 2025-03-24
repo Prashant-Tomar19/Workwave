@@ -1,0 +1,206 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#main{ 
+    height: 100%;
+    width: 100%;
+    background-color: aliceblue;
+}
+#header{
+    height: 10%;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#logo{
+    height: 60%;
+   
+    object-fit: cover;
+    margin: 25px;
+}
+#logo img{
+    width: 100%;
+    height: 100%;
+}
+.text{
+   
+  
+    color: rgb(2, 2, 34);
+    display: flex;
+}
+.text:hover{
+    background-color: rgb(8, 109, 143);
+}
+#contactdetails{
+    margin-left: 40px;
+    font-weight: lighter;
+}
+.icon{
+   
+   padding: 10px;
+   border-radius: 50%;
+}
+.icon:hover{
+    background-color: lightblue;
+}
+
+#try{
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    
+}
+#try:hover{
+   
+    background-color: rgb(2, 34, 2);
+   
+    
+}
+#login{
+   
+    display: flex;
+    padding: 10px;
+    border-radius: 50%;
+   
+ }
+ #login:hover{
+    background-color:lightblue;
+ }
+#fakeheader{
+    height: 10%;
+    width: 100%;
+  
+}
+
+.page1{
+    height: 87%;
+    width: 100%;
+    background-color :white ;
+    justify-content: center;
+} 
+#strip{
+    width: 100%;
+    height: 13%;
+    background-color: rgb(8, 8, 62);
+    color: white;
+   align-items: center;
+    justify-content: center;
+    display: flex;
+}
+#strip u{
+    margin-left: 20px;
+    font-weight: lighter  ;
+}
+
+#box1{
+    height: 90%;
+    width: 50%;
+    background-color: white;
+    margin: 10px;
+    margin-top: 25px;
+   
+    
+}
+#box2{
+    height: 90%;
+    background-color: gray;
+    width: 50%;
+    margin: 10px;
+    margin-top: 25px;
+   
+}
+img{
+  height: 437px;
+  width: 740px;
+  object-fit: cover;
+ 
+  
+  
+}
+#heading{
+width: 100%;
+height: 16%;
+background-color: aquamarine;
+display: flex;
+align-items: center;
+justify-content: center;
+color: blue;
+}
+#heading h1{
+    font-weight: 600;
+}
+#box1 h1{
+    font-weight: 600;
+    color: rgb(28, 28, 78);
+    font-size: 50px;
+    margin: 30px 10px;
+  
+}
+#box1 p{
+    font-size: x-large;
+    margin: 30px 10px;
+    
+}
+
+#content{
+width: 100%;
+height: 76%;
+background-color:white;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+#btns{
+    display: flex;
+    justify-content: center;
+   
+
+}
+#btn1{
+    text-align: center;
+    width: 23%;
+    padding: 10px 20px;
+    color: white;
+    background-color: rgb(5, 190, 252);
+    border-radius: 5px;
+  
+}
+#btn1:hover{
+    background-color: rgb(4, 57, 75);
+}
+#btn2:hover{
+    background-color: rgb(172, 229, 248);
+}
+#btn2{
+    text-align: center;
+    width: 23%;
+    padding: 10px 20px;
+    color: lightblue;
+    border: 1px solid rgb(9, 190, 250);
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.page2{
+    height: 87%;
+    width: 100%;
+
+}  
+#square1{
+    background-color: blue;
+    border-color:2px solid black;
+    
+    height: 50px;
+    width: 50px;
+}
