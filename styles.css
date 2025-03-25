@@ -56,14 +56,30 @@ html,body{
 }
 
 #try{
+    margin: 0px;
+    margin-right: 110px;
     padding: 10px 20px;
     background-color: green;
+    color: white;
+    
+}
+#try1{
+    margin: 0px;
+    margin-left: 110px;
+    padding: 10px 20px;
+    background-color: rgb(167, 108, 48);
     color: white;
     
 }
 #try:hover{
    
     background-color: rgb(2, 34, 2);
+   
+    
+}
+#try1:hover{
+   
+    background-color: rgb(133, 20, 20);
    
     
 }
