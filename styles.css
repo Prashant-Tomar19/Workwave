@@ -211,8 +211,7 @@ justify-content: center;
 }  
 #square1{
     background-color: rgb(219, 110, 223);
-    border-color:2px solid black;
-    
+    border-color:2px solid black; 
     height: 150px;
     width: 150px;
 }
