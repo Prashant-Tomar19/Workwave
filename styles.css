@@ -11,7 +11,7 @@
 }
 body{
     background: linear-gradient(45deg, #FFE5B4,#FFDAB9,#FFCBA4,#FFB07C);
-    background-size: 100% 100%;
+    background-size: 500% 500%;
     animation: gradientShift 8s ease infinite;
 }
 html,body{
