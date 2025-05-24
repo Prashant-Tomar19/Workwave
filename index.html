@@ -99,7 +99,7 @@
               <pre>Location: Mumbai</pre>
               <pre>Stipend:₹5,000/month</pre>
               <pre>Duration: 3 Months</pre>
-              <button class="details-btn">View details</button>
+              <button class="details-btn"onclick="openModal('modal1')">View details</button>
           </div>
           
         <div class="internship-card" data-category="Engineering">
@@ -108,7 +108,7 @@
             <pre>Location: Hosur</pre>
             <pre>Stipend: ₹15,000/month</pre>
             <pre>Duration: 6 Months</pre>
-            <button class="details-btn">View details</button>
+            <button class="details-btn" onclick="openModal('modal2')">View details</button>
         </div>
 
         <div class="internship-card" data-category="Finance">
@@ -117,7 +117,7 @@
             <pre>Location: Hyderabad</pre>
             <pre>Stipend: ₹10,000/month</pre>
             <pre>Duration: 6 Months</pre>
-            <button class="details-btn">View details</button>
+            <button class="details-btn" onclick="openModal('modal3')">View details</button>
         </div>
         
         <div class="internship-card" data-category="Finance">
@@ -126,7 +126,7 @@
           <pre>Location: Mumbai</pre>
           <pre>Stipend: ₹5,000/month</pre>
           <pre>Duration: 3 Months</pre>
-          <button class="details-btn">View details</button>
+          <button class="details-btn" onclick="openModal('modal4')">View details</button>
       </div>
       <div class="internship-card" data-category="Finance">
         <h3>Customer Service</h3>
@@ -134,7 +134,7 @@
         <pre>Location: Gurgaon</pre>
         <pre>Stipend: ₹15,000/month</pre>
         <pre>Duration: 6 Months</pre>
-        <button class="details-btn">View details</button>
+        <button class="details-btn" onclick="openModal('modal5')">View details</button>
     </div></div>
     <div class="page 4">
       <div class="job-list">
@@ -145,7 +145,7 @@
         <pre>Location: Gurgaon</pre>
         <pre>Stipend: ₹15,000/month</pre>
         <pre>Duration: 6 Months</pre>
-        <button class="details-btn">View details</button>
+        <button class="details-btn" onclick="openModal('modal6')">View details</button>
     </div>
     <div class="job-card" data-category="Digital Marketing">
         <h3>Part time</h3>
@@ -153,7 +153,7 @@
         <pre>Location: Work from home</pre>
         <pre>Stipend: ₹3,000/month</pre>
         <pre>Duration: 1 Months</pre>
-        <button class="details-btn">View details</button>
+        <button class="details-btn" onclick="openModal('modal7')">View details</button>
     </div>
     <div class="job-card" data-category="HR">
         <h3>MBA</h3>
@@ -161,7 +161,7 @@
         <pre>Location: Mumbai</pre>
         <pre>Stipend: ₹10,000/month</pre>
         <pre>Duration: 6 Months</pre>
-        <button class="details-btn">View details</button>
+        <button class="details-btn" onclick="openModal('modal8')">View details</button>
     </div>
     <div class="job-card" data-category="Dta Science">
         <h3>Digital Marketing</h3>
@@ -169,7 +169,7 @@
         <pre>Location: Kolkata</pre>
         <pre>Stipend: ₹15,000/month</pre>
         <pre>Duration: 3 Months</pre>
-        <button class="details-btn" >View details</button>
+        <button class="details-btn" onclick="openModal('modal9')" >View details</button>
     </div>
     <div class="job-card" data-category="Design">
         <h3>Graphic Designs</h3>
@@ -177,8 +177,21 @@
         <pre>Location: Ahemdabad</pre>
         <pre>Stipend: ₹8,000/month</pre>
         <pre>Duration: 6 Months</pre>
-        <button class="details-btn">View details</button>
+        <button class="details-btn" onclick="openModal('modal10')">View details</button>
     </div></div>
+
+    <!-- MODALS -->
+  <div id="modal1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal1')">&times;</span><h2>Law/Legal at Thomas Cook</h2><p>Work with the legal team on contracts, compliance, and policy.</p></div></div>
+  <div id="modal2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal2')">&times;</span><h2>Embedded Systems at India Nippon</h2><p>Firmware development and hardware interfacing tasks.</p></div></div>
+  <div id="modal3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal3')">&times;</span><h2>Branch Executive at Muthoot Finance</h2><p>Manage branch tasks and customer communication.</p></div></div>
+  <div id="modal4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal4')">&times;</span><h2>Operations at Hungama</h2><p>Support coordination and daily business activities.</p></div></div>
+  <div id="modal5" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal5')">&times;</span><h2>Customer Service at AECC</h2><p>Assist in handling student queries and counseling.</p></div></div>
+  <div id="modal6" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal6')">&times;</span><h2>Operations at Exicorn India</h2><p>Assist in reconciliations, audits, and budgeting.</p></div></div>
+  <div id="modal7" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal7')">&times;</span><h2>Part Time at Cannibals Media</h2><p>Create social content and engage with followers remotely.</p></div></div>
+  <div id="modal8" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal8')">&times;</span><h2>MBA at Cocoma</h2><p>Market strategy and competitor analysis tasks.</p></div></div>
+  <div id="modal9" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal9')">&times;</span><h2>Digital Marketing at Eden</h2><p>SEO, ads optimization and campaign design.</p></div></div>
+  <div id="modal10" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal10')">&times;</span><h2>Graphic Designs at Zero Dimensions</h2><p>Design creative assets for digital platforms.</p></div></div>
+  
     
     +
   </body>
