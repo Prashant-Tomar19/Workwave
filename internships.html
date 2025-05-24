@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internships</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+    }
+    .filters {
+      width: 250px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      margin-right: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+    .filters input[type="text"] {
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+    .filters label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .filters input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .filters button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .filters button:hover {
+      background-color: #005fa3;
+    }
+    .internships-section {
+      flex: 1;
+    }
+    .intern-card {
+      background: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .intern-card:hover {
+      background: #f0f8ff;
+    }
+    .intern-title {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .meta {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .highlight {
+      color: green;
+      font-weight: bold;
+    }
+    .badge {
+      background: #d1ecf1;
+      color: #0c5460;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-left: 5px;
+    }
+    .intern-details {
+      display: none;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+    }
+    .intern-card.active .intern-details {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Filters -->
+    <div class="filters">
+      <label>Profile</label>
+      <input type="text" id="profile" placeholder="e.g. Web Development">
+
+      <label>Location</label>
+      <input type="text" id="location" placeholder="e.g. Remote">
+
+      <label><input type="checkbox" id="wfh"> Work from home</label>
+      <label><input type="checkbox" id="parttime"> Part-time</label>
+
+      <label>Monthly stipend (in ₹): <span id="stipendValue">0</span></label>
+      <input type="range" id="stipendRange" min="0" max="50000" value="0" step="1000">
+
+      <label>Duration (in months)</label>
+      <input type="text" id="duration" placeholder="e.g. 3">
+
+      <button onclick="clearAll()">Clear all</button>
+    </div>
+
+    <!-- Internships Section -->
+    <div class="internships-section" id="internships">
+      <!-- Internship 1 -->
+      <div class="intern-card" onclick="toggleDetails(this)">
+        <div class="intern-title">Web Development Intern <span class="badge">Actively hiring</span></div>
+        <div class="meta">📍 Remote | 🕒 3 months | 💰 ₹ 10,000 / month</div>
+        <div class="highlight">🟢 Just posted</div>
+        <div class="intern-details">
+          <strong>Description:</strong> Build and maintain front-end websites and dashboards.<br>
+          <strong>Skills:</strong> HTML, CSS, JavaScript.<br>
+          <strong>Company:</strong> Devify Technologies.
+        </div>
+      </div>
+
+      <!-- Internship 2 -->
+      <div class="intern-card" onclick="toggleDetails(this)">
+        <div class="intern-title">Graphic Design Intern</div>
+        <div class="meta">📍 Delhi | 🕒 2 months | 💰 ₹ 7,000 / month</div>
+        <div class="highlight">🟢 2 days ago</div>
+        <div class="intern-details">
+          <strong>Description:</strong> Create visuals for marketing and social media campaigns.<br>
+          <strong>Skills:</strong> Photoshop, Illustrator, Canva.<br>
+          <strong>Company:</strong> Creativo Studio.
+        </div>
+      </div>
+
+      <!-- Internship 3 -->
+      <div class="intern-card" onclick="toggleDetails(this)">
+        <div class="intern-title">Content Writing Intern</div>
+        <div class="meta">📍 Work from home | 🕒 1 month | 💰 ₹ 5,000 / month</div>
+        <div class="highlight">🟢 1 week ago</div>
+        <div class="intern-details">
+          <strong>Description:</strong> Write blogs, SEO content, and social captions.<br>
+          <strong>Skills:</strong> English Writing, SEO Basics.<br>
+          <strong>Company:</strong> BlogBoost.
+        </div>
+      </div>
+
+      <!-- Internship 4 -->
+      <div class="intern-card" onclick="toggleDetails(this)">
+        <div class="intern-title">Python Intern</div>
+        <div class="meta">📍 Bangalore | 🕒 4 months | 💰 ₹ 12,000 / month</div>
+        <div class="highlight">🟢 3 days ago</div>
+        <div class="intern-details">
+          <strong>Description:</strong> Assist in backend automation using Python scripts.<br>
+          <strong>Skills:</strong> Python, Pandas, APIs.<br>
+          <strong>Company:</strong> AutoSoft Inc.
+        </div>
+      </div>
+
+      <!-- Internship 5 -->
+      <div class="intern-card" onclick="toggleDetails(this)">
+        <div class="intern-title">HR Intern</div>
+        <div class="meta">📍 Mumbai | 🕒 2 months | 💰 ₹ 6,000 / month</div>
+        <div class="highlight">🟢 5 days ago</div>
+        <div class="intern-details">
+          <strong>Description:</strong> Handle recruitment coordination and employee onboarding.<br>
+          <strong>Skills:</strong> Communication, MS Excel.<br>
+          <strong>Company:</strong> HireHub.
+        </div>
+      </div>
+      <!-- Internship 6 -->
+<div class="intern-card" onclick="toggleDetails(this)">
+  <div class="intern-title">Marketing Intern <span class="badge">Actively hiring</span></div>
+  <div class="meta">📍 Chennai | 🕒 3 months | 💰 ₹ 8,000 / month</div>
+  <div class="highlight">🟢 Today</div>
+  <div class="intern-details">
+    <strong>Description:</strong> Help plan and execute marketing campaigns.<br>
+    <strong>Skills:</strong> Communication, Social Media, MS Excel.<br>
+    <strong>Company:</strong> Marketify.
+  </div>
+</div>
+
+<!-- Internship 7 -->
+<div class="intern-card" onclick="toggleDetails(this)">
+  <div class="intern-title">UI/UX Design Intern</div>
+  <div class="meta">📍 Remote | 🕒 2 months | 💰 ₹ 6,000 / month</div>
+  <div class="highlight">🟢 1 day ago</div>
+  <div class="intern-details">
+    <strong>Description:</strong> Design wireframes and improve app usability.<br>
+    <strong>Skills:</strong> Figma, UX Research, Prototyping.<br>
+    <strong>Company:</strong> AppVine.
+  </div>
+</div>
+
+<!-- Internship 8 -->
+<div class="intern-card" onclick="toggleDetails(this)">
+  <div class="intern-title">Finance Intern</div>
+  <div class="meta">📍 Gurgaon | 🕒 3 months | 💰 ₹ 9,000 / month</div>
+  <div class="highlight">🟢 2 days ago</div>
+  <div class="intern-details">
+    <strong>Description:</strong> Assist in financial reporting and analysis.<br>
+    <strong>Skills:</strong> Excel, Tally, Accounting Basics.<br>
+    <strong>Company:</strong> FinTrust Corp.
+  </div>
+</div>
+
+<!-- Internship 9 -->
+<div class="intern-card" onclick="toggleDetails(this)">
+  <div class="intern-title">Machine Learning Intern <span class="badge">Remote</span></div>
+  <div class="meta">📍 Remote | 🕒 4 months | 💰 ₹ 15,000 / month</div>
+  <div class="highlight">🟢 3 days ago</div>
+  <div class="intern-details">
+    <strong>Description:</strong> Build ML models and assist in data analysis.<br>
+    <strong>Skills:</strong> Python, Scikit-Learn, Pandas.<br>
+    <strong>Company:</strong> DataWave AI.
+  </div>
+</div>
+
+<!-- Internship 10 -->
+<div class="intern-card" onclick="toggleDetails(this)">
+  <div class="intern-title">Operations Intern</div>
+  <div class="meta">📍 Kolkata | 🕒 1 month | 💰 ₹ 5,000 / month</div>
+  <div class="highlight">🟢 4 days ago</div>
+  <div class="intern-details">
+    <strong>Description:</strong> Support daily operations and logistics.<br>
+    <strong>Skills:</strong> MS Excel, Time Management.<br>
+    <strong>Company:</strong> QuickOps Services.
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <script>
+    const stipendSlider = document.getElementById('stipendRange');
+    const stipendValue = document.getElementById('stipendValue');
+
+    stipendSlider.addEventListener('input', () => {
+      stipendValue.textContent = stipendSlider.value;
+    });
+
+    function clearAll() {
+      document.getElementById('profile').value = '';
+      document.getElementById('location').value = '';
+      document.getElementById('wfh').checked = false;
+      document.getElementById('parttime').checked = false;
+      document.getElementById('duration').value = '';
+      document.getElementById('stipendRange').value = 0;
+      document.getElementById('stipendValue').textContent = 0;
+    }
+
+    function toggleDetails(card) {
+      card.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

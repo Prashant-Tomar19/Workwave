@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WorkWave Companies</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9fafc;
+      color: #333;
+    }
+
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      color: #0077cc;
+      margin-bottom: 1rem;
+    }
+
+    /* Search input */
+    #searchBar {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 2rem;
+      transition: border-color 0.3s ease;
+    }
+    #searchBar:focus {
+      outline: none;
+      border-color: #0077cc;
+      box-shadow: 0 0 5px rgba(0,119,204,0.5);
+    }
+
+    /* Companies grid */
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .company-card {
+      background: white;
+      padding: 1.2rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+      border: 1px solid transparent;
+    }
+    .company-card:hover {
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+      border-color: #0077cc;
+    }
+
+    .company-logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #f0f0f0;
+      flex-shrink: 0;
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .company-info {
+      flex-grow: 1;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+      color: #0077cc;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .company-name:hover {
+      color: #005fa3;
+    }
+
+    .company-meta {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      .company-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .company-logo {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    /* Modal styles */
+    #companyModal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    #companyModal.open {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: fadeInUp 0.3s ease forwards;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #888;
+      cursor: pointer;
+      user-select: none;
+    }
+    .modal-close:hover {
+      color: #0077cc;
+    }
+    .modal-logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      padding: 10px;
+      background: #f9f9f9;
+    }
+    .modal-title {
+      font-size: 1.8rem;
+      margin: 0 0 0.5rem;
+      color: #0077cc;
+    }
+    .modal-industry-location {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .modal-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <header>WorkWave Companies</header>
+  <main>
+    <h2>Discover Top Employers</h2>
+
+    <input type="text" id="searchBar" placeholder="Search companies by name or industry..." aria-label="Search companies" />
+
+    <div class="companies-grid" id="companiesGrid">
+      <!-- Company cards inserted here by JS -->
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="companyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <div class="modal-content">
+      <span class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</span>
+      <img src="" alt="" class="modal-logo" id="modalLogo" />
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <div class="modal-industry-location" id="modalIndustryLocation"></div>
+      <p class="modal-description" id="modalDescription"></p>
+    </div>
+  </div>
+
+  <script>
+    const companies = [
+      {
+        name: "TechNova",
+        industry: "Technology",
+        location: "San Francisco, CA",
+        logo: "https://logo.clearbit.com/technova.com",
+        description: "TechNova is a cutting-edge technology company specializing in AI and cloud computing solutions, dedicated to transforming businesses worldwide."
+      },
+      {
+        name: "HealthPlus",
+        industry: "Healthcare",
+        location: "New York, NY",
+        logo: "https://logo.clearbit.com/healthplus.com",
+        description: "HealthPlus delivers innovative healthcare products and services that improve patient outcomes and streamline medical operations."
+      },
+      {
+        name: "EcoGoods",
+        industry: "Retail",
+        location: "Seattle, WA",
+        logo: "https://logo.clearbit.com/etsy.com", // Using Etsy logo as a good placeholder for retail
+        description: "EcoGoods is a sustainable retail company focused on eco-friendly products and ethical sourcing."
+      },
+      {
+        name: "FinServe",
+        industry: "Finance",
+        location: "Chicago, IL",
+        logo: "https://logo.clearbit.com/visa.com", // Using Visa's logo as Finance placeholder
+        description: "FinServe offers comprehensive financial services, including personal banking, loans, and investment management."
+      },
+      {
+        name: "CreativeBox",
+        industry: "Marketing",
+        location: "Austin, TX",
+        logo: "https://logo.clearbit.com/hubspot.com", // HubSpot logo as marketing example
+        description: "CreativeBox is a full-service marketing agency specializing in digital campaigns, branding, and content creation."
+      },
+      {
+        name: "BuildWell",
+        industry: "Construction",
+        location: "Denver, CO",
+        logo: "https://logo.clearbit.com/caterpillar.com", // Caterpillar logo for construction
+        description: "BuildWell is a leader in construction and engineering projects, delivering quality infrastructure solutions."
+      },
+      {
+        name: "GreenEnergy",
+        industry: "Energy",
+        location: "Boston, MA",
+        logo: "https://logo.clearbit.com/tesla.com", // Tesla logo for energy
+        description: "GreenEnergy pioneers renewable energy solutions and sustainable power generation technologies."
+      },
+      {
+        name: "EduLearn",
+        industry: "Education",
+        location: "San Diego, CA",
+        logo: "https://logo.clearbit.com/coursera.org", // Coursera logo as education example
+        description: "EduLearn offers online education platforms with courses from top universities and industry experts."
+      },
+      {
+        name: "SafeNet",
+        industry: "Cybersecurity",
+        location: "Atlanta, GA",
+        logo: "https://logo.clearbit.com/crowdstrike.com",
+        description: "SafeNet specializes in cybersecurity solutions protecting businesses from digital threats and data breaches."
+      },
+      {
+        name: "TravelNest",
+        industry: "Travel",
+        location: "Miami, FL",
+        logo: "https://logo.clearbit.com/airbnb.com",
+        description: "TravelNest provides innovative travel booking solutions and unique vacation experiences worldwide."
+      }
+    ];
+
+    const companiesGrid = document.getElementById('companiesGrid');
+    const searchBar = document.getElementById('searchBar');
+
+    // Modal elements
+    const companyModal = document.getElementById('companyModal');
+    const modalLogo = document.getElementById('modalLogo');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalIndustryLocation = document.getElementById('modalIndustryLocation');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+    function createCompanyCard(company) {
+      const card = document.createElement('div');
+      card.classList.add('company-card');
+      card.tabIndex = 0;
+
+      card.innerHTML = `
+        <img src="${company.logo}" alt="${company.name} logo" class="company-logo" onerror="this.src='https://via.placeholder.com/64?text=Logo'" />
+        <div class="company-info">
+          <div class="company-name" tabindex="0" role="button" aria-pressed="false">${company.name}</div>
+          <div class="company-meta">${company.industry} &mdash; ${company.location}</div>
+        </div>
+      `;
+
+      // Show modal on clicking company name or pressing Enter/Space
+      const nameEl = card.querySelector('.company-name');
+      nameEl.addEventListener('click', () => showCompanyModal(company));
+      nameEl.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showCompanyModal(company);
+        }
+      });
+
+      return card;
+    }
+
+    function renderCompanies(list) {
+      companiesGrid.innerHTML = '';
+      if (list.length === 0) {
+        companiesGrid.innerHTML = '<p>No companies found matching your search.</p>';
+        return;
+      }
+      list.forEach(company => {
+        companiesGrid.appendChild(createCompanyCard(company));
+      });
+    }
+
+    function filterCompanies(query) {
+      query = query.toLowerCase();
+      return companies.filter(c =>
+        c.name.toLowerCase().includes(query) ||
+        c.industry.toLowerCase().includes(query)
+      );
+    }
+
+    function showCompanyModal(company) {
+      modalLogo.src = company.logo;
+      modalLogo.alt = company.name + " logo";
+      modalTitle.textContent = company.name;
+      modalIndustryLocation.textContent = `${company.industry} — ${company.location}`;
+      modalDescription.textContent = company.description;
+
+      companyModal.classList.add('open');
+      companyModal.focus();
+    }
+
+    function closeCompanyModal() {
+      companyModal.classList.remove('open');
+    }
+
+    // Close modal on clicking close button or outside modal content
+    modalCloseBtn.addEventListener('click', closeCompanyModal);
+    companyModal.addEventListener('click', e => {
+      if (e.target === companyModal) {
+        closeCompanyModal();
+      }
+    });
+
+    // Close modal on Escape key press
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && companyModal.classList.contains('open')) {
+        closeCompanyModal();
+      }
+    });
+
+    // Initial render
+    renderCompanies(companies);
+
+    // Filter on input
+    searchBar.addEventListener('input', e => {
+      const filtered = filterCompanies(e.target.value);
+      renderCompanies(filtered);
+    });
+  </script>
+</body>
+</html>

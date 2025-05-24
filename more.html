@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WorkWave - More</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f4f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      color: #0077cc;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #0077cc;
+      padding-bottom: 0.3rem;
+    }
+
+    /* FAQ Section */
+    .faq {
+      margin-bottom: 2rem;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .faq-question {
+      cursor: pointer;
+      padding: 1rem 1.5rem;
+      font-weight: 700;
+      position: relative;
+      user-select: none;
+      background: #e9f0fc;
+      color: #004a99;
+      transition: background 0.3s ease;
+    }
+    .faq-question:hover {
+      background: #d0dffb;
+    }
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-question::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1.5rem;
+      background: white;
+      color: #444;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      line-height: 1.5;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+      padding: 1rem 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .contact p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    .contact strong {
+      color: #0077cc;
+    }
+
+    /* Social Media */
+    .social-media {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .social-media a {
+      text-decoration: none;
+      color: #0077cc;
+      font-size: 1.8rem;
+      transition: color 0.3s ease;
+    }
+    .social-media a:hover {
+      color: #005fa3;
+    }
+
+    /* Newsletter Signup */
+    .newsletter {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+      max-width: 450px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .newsletter h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #0077cc;
+    }
+    .newsletter input[type="email"] {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    .newsletter input[type="email"]:focus {
+      outline: none;
+      border-color: #0077cc;
+      box-shadow: 0 0 5px rgba(0,119,204,0.5);
+    }
+    .newsletter button {
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .newsletter button:hover {
+      background: #005fa3;
+    }
+    .newsletter .message {
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+      color: green;
+    }
+    .newsletter .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <header>WorkWave - More</header>
+  <main>
+    <section class="faq" aria-label="Frequently Asked Questions">
+      <h2>FAQs</h2>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0" aria-expanded="false">How do I create an account?</div>
+        <div class="faq-answer">Click on the "Sign Up" button at the top-right corner and fill out the registration form with your details.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0" aria-expanded="false">Can I apply to multiple jobs at once?</div>
+        <div class="faq-answer">Yes, you can apply to as many jobs as you want. Just click "Apply" on each job listing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0" aria-expanded="false">How do I reset my password?</div>
+        <div class="faq-answer">Go to the login page and click on "Forgot Password" to receive reset instructions via email.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0" aria-expanded="false">Is my personal data secure on WorkWave?</div>
+        <div class="faq-answer">We use industry-standard encryption and security practices to protect your data and never share it without your consent.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0" aria-expanded="false">How do I update my profile information?</div>
+        <div class="faq-answer">After logging in, navigate to your profile page and click "Edit Profile" to update your details.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0" aria-expanded="false">Can I save jobs to view later?</div>
+        <div class="faq-answer">Yes, you can save jobs by clicking the "Save" button on any job listing to review or apply later.</div>
+      </div>
+    </section>
+
+    <section class="contact" aria-label="Contact Information">
+      <h2>Contact Us</h2>
+      <p><strong>Email:</strong> support@workwave.com</p>
+      <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+      <p><strong>Address:</strong> 123 WorkWave St, Suite 100, San Francisco, CA</p>
+    </section>
+
+    <section class="social-media" aria-label="Social media links">
+      <a href="#" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">🐦</a>
+      <a href="#" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">🔗</a>
+      <a href="#" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">📸</a>
+    </section>
+
+    <section class="newsletter" aria-label="Newsletter Signup">
+      <h3>Subscribe to our Newsletter</h3>
+      <form id="newsletterForm" novalidate>
+        <input type="email" id="emailInput" placeholder="Your email address" aria-label="Email address" required />
+        <button type="submit">Subscribe</button>
+        <div class="message" id="formMessage" role="alert" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // FAQ Accordion toggle
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => toggleFAQ(question));
+      question.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFAQ(question);
+        }
+      });
+    });
+
+    function toggleFAQ(question) {
+      const faqItem = question.parentElement;
+      const isOpen = faqItem.classList.toggle('open');
+      question.setAttribute('aria-expanded', isOpen);
+    }
+
+    // Newsletter form validation and submission simulation
+    const newsletterForm = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('emailInput');
+    const formMessage = document.getElementById('formMessage');
+
+    newsletterForm.addEventListener('submit', e => {
+      e.preventDefault();
+      formMessage.textContent = '';
+      formMessage.classList.remove('error');
+
+      const email = emailInput.value.trim();
+      if (!validateEmail(email)) {
+        formMessage.textContent = 'Please enter a valid email address.';
+        formMessage.classList.add('error');
+        emailInput.focus();
+        return;
+      }
+
+      // Simulate success message
+      formMessage.textContent = 'Thank you for subscribing!';
+      emailInput.value = '';
+    });
+
+    function validateEmail(email) {
+      // Basic email regex validation
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email.toLowerCase());
+    }
+  </script>
+</body>
+</html>
