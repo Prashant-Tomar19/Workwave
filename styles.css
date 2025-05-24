@@ -287,13 +287,12 @@ h1 {
     background-color: #e0e0e0;
     text-align: center;
 }
-
-.internship-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+.internship-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
 }
 
 .internship-card {
@@ -331,3 +330,39 @@ h1 {
 .hidden {
     display: none;
 }
+.page4{
+    height: 87%;
+     width: 100%;}
+
+.job-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
+}     
+.job-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2 5px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin: 10px;
+    width: 250px;
+    transition: all 0.3s ease-in-out;
+    
+}
+.job-card h3 {
+    margin: 0;
+    color: #0073e6;
+}
+
+.job-card p {
+    margin: 5px 0;
+}
+
+
+
+  
+
+
+
