@@ -9,14 +9,17 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-body{
-    background: linear-gradient(45deg, #FFE5B4,#FFDAB9,#FFCBA4,#FFB07C);
-    background-size: 500% 500%;
-    animation: gradientShift 8s ease infinite;
+
+body {
+    background: linear-gradient(270deg, #ff7e5f, #feb47b);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
 }
+
 html,body{
     height: 100%;
     width: 100%;
+    
 }
 #main{ 
     height: 100%;
@@ -26,7 +29,7 @@ html,body{
 #header{
     height: 10%;
     width: 100%;
-    background-color: rgb(8, 4, 0);
+    background-color: black;
     position: fixed;
     display: flex;
     align-items: center;
@@ -75,7 +78,7 @@ html,body{
     margin: 0px;
     margin-left: 110px;
     padding: 10px 20px;
-    background-color: rgb(167, 108, 48);
+    background-color: rgb(147, 85, 24);
     color: white;
     
 }
