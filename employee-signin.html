@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employee Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #5f2c82, #49a09d);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .signup-container {
+      background-color: #f6f0fa;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      width: 400px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .signup-container:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #6a0572;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #3e1f47;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #8e44ad;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(142, 68, 173, 0.2);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #6a0572;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #4a0150;
+    }
+
+    .error {
+      color: #d32f2f;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2>Employee Sign Up</h2>
+    <form id="signupForm">
+      <label for="empName">Full Name</label>
+      <input type="text" id="empName" name="empName" placeholder="Enter your name" required />
+
+      <label for="empId">Employee ID</label>
+      <input type="text" id="empId" name="empId" placeholder="Choose an ID" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Create a password" required />
+
+      <div class="error" id="errorMsg">Please fill in all fields.</div>
+
+      <button type="submit" class="submit-btn">Sign Up</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('empName').value.trim();
+      const empId = document.getElementById('empId').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!name || !empId || !email || !password) {
+        errorMsg.style.display = 'block';
+        errorMsg.textContent = 'Please fill in all fields.';
+      } else {
+        errorMsg.style.display = 'none';
+        alert(`Welcome aboard, ${name}!`);
+        // Here you'd connect with backend or redirect logic
+      }
+    });
+  </script>
+
+</body>
+</html>

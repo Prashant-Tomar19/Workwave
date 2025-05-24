@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jobs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+    }
+    .filters {
+      width: 250px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      margin-right: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+    .filters input[type="text"] {
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+    .filters label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .filters input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .filters button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .filters button:hover {
+      background-color: #005fa3;
+    }
+    .jobs-section {
+      flex: 1;
+    }
+    .job-card {
+      background: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .job-card:hover {
+      background: #f0f8ff;
+    }
+    .job-title {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .meta {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .highlight {
+      color: green;
+      font-weight: bold;
+    }
+    .badge {
+      background: #d1ecf1;
+      color: #0c5460;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-left: 5px;
+    }
+    .job-details {
+      display: none;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+    }
+    .job-card.active .job-details {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Filters -->
+    <div class="filters">
+      <label>Profile</label>
+      <input type="text" id="profile" placeholder="e.g. Marketing">
+
+      <label>Location</label>
+      <input type="text" id="location" placeholder="e.g. Delhi">
+
+      <label><input type="checkbox" id="wfh"> Work from home</label>
+      <label><input type="checkbox" id="parttime"> Part-time</label>
+
+      <label>Annual salary (in lakhs): <span id="salaryValue">0</span></label>
+      <input type="range" id="salaryRange" min="0" max="10" value="0">
+
+      <label>Years of experience</label>
+      <input type="text" id="experience" placeholder="Select years of experience">
+
+      <button onclick="clearAll()">Clear all</button>
+    </div>
+
+    <!-- Jobs Section -->
+    <div class="jobs-section" id="jobs">
+      <!-- Job Example -->
+      <div class="job-card" onclick="toggleDetails(this)">
+        <div class="job-title">Data Entry Associate <span class="badge">Actively hiring</span></div>
+        <div class="meta">📍 Hyderabad (Hybrid) | 🕒 0 year(s) | 💰 ₹ 2,16,000 - 3,00,000</div>
+        <div class="highlight">🟢 Today • Fresher Job</div>
+        <div class="job-details">
+          <strong>Description:</strong> Responsible for entering, updating, and maintaining accurate data in the system.<br>
+          <strong>Skills:</strong> Typing, Attention to detail, MS Excel.<br>
+          <strong>Company:</strong> GNM Group.
+        </div>
+      </div>
+
+      <div class="job-card" onclick="toggleDetails(this)">
+        <div class="job-title">Customer Success Executive (Kannada) <span class="badge">Actively hiring</span></div>
+        <div class="meta">📍 Bangalore | 🕒 1 year(s) | 💰 ₹ 4,80,000 - 5,50,000</div>
+        <div class="meta">🗓️ 2 weeks ago</div>
+        <div class="job-details">
+          <strong>Description:</strong> Assist Kannada-speaking customers and ensure satisfaction.<br>
+          <strong>Skills:</strong> Communication, CRM tools, Regional language fluency.<br>
+          <strong>Company:</strong> Reapmor.
+        </div>
+      </div>
+
+      <div class="job-card" onclick="toggleDetails(this)">
+        <div class="job-title">Business Development Executive <span class="badge">Actively hiring</span></div>
+        <div class="meta">📍 Hyderabad | 🕒 1 year(s) | 💰 ₹ 3,00,000 - 5,00,000</div>
+        <div class="meta">🗓️ 2 weeks ago</div>
+        <div class="job-details">
+          <strong>Description:</strong> Generate leads and convert business opportunities.<br>
+          <strong>Skills:</strong> Sales, Client Communication, CRM.<br>
+          <strong>Company:</strong> EWheeler Mobility.
+        </div>
+      </div>
+      <!-- Only job listings section shown here for brevity -->
+<div class="jobs-section" id="jobs">
+  <!-- Job 1 -->
+  <div class="job-card" onclick="toggleDetails(this)">
+    <div class="job-title">Data Entry Associate <span class="badge">Actively hiring</span></div>
+    <div class="meta">📍 Hyderabad (Hybrid) | 🕒 0 year(s) | 💰 ₹ 2,16,000 - 3,00,000</div>
+    <div class="highlight">🟢 Today • Fresher Job</div>
+    <div class="job-details">
+      <strong>Description:</strong> Enter, update, and maintain accurate data.<br>
+      <strong>Skills:</strong> Typing, Attention to detail, MS Excel.<br>
+      <strong>Company:</strong> GNM Group.
+    </div>
+  </div>
+
+  <!-- Job 2 -->
+  <div class="job-card" onclick="toggleDetails(this)">
+    <div class="job-title">Customer Success Executive (Kannada) <span class="badge">Actively hiring</span></div>
+    <div class="meta">📍 Bangalore | 🕒 1 year(s) | 💰 ₹ 4,80,000 - 5,50,000</div>
+    <div class="meta">🗓️ 2 weeks ago</div>
+    <div class="job-details">
+      <strong>Description:</strong> Assist customers in Kannada and ensure client satisfaction.<br>
+      <strong>Skills:</strong> Communication, CRM, Kannada.<br>
+      <strong>Company:</strong> Reapmor.
+    </div>
+  </div>
+
+  <!-- Job 3 -->
+  <div class="job-card" onclick="toggleDetails(this)">
+    <div class="job-title">Business Development Executive <span class="badge">Actively hiring</span></div>
+    <div class="meta">📍 Hyderabad | 🕒 1 year(s) | 💰 ₹ 3,00,000 - 5,00,000</div>
+    <div class="meta">🗓️ 2 weeks ago</div>
+    <div class="job-details">
+      <strong>Description:</strong> Identify and close business opportunities.<br>
+      <strong>Skills:</strong> Sales, Client Interaction, CRM.<br>
+      <strong>Company:</strong> EWheeler Mobility.
+    </div>
+  </div>
+
+  <!-- Job 4 -->
+  <div class="job-card" onclick="toggleDetails(this)">
+    <div class="job-title">Front-End Web Developer <span class="badge">Remote</span></div>
+    <div class="meta">📍 Remote | 🕒 2 years | 💰 ₹ 6,00,000 - 8,00,000</div>
+    <div class="meta">🗓️ 1 week ago</div>
+    <div class="job-details">
+      <strong>Description:</strong> Build modern user interfaces with React.js.<br>
+      <strong>Skills:</strong> HTML, CSS, JavaScript, React.js.<br>
+      <strong>Company:</strong> PixelSoft.
+    </div>
+  </div>
+
+  <!-- Job 5 -->
+  <div class="job-card" onclick="toggleDetails(this)">
+    <div class="job-title">Digital Marketing Analyst</div>
+    <div class="meta">📍 Delhi | 🕒 1-2 years | 💰 ₹ 4,00,000 - 6,00,000</div>
+    <div class="meta">🗓️ 3 days ago</div>
+    <div class="job-details">
+      <strong>Description:</strong> Analyze digital campaigns and improve ad performance.<br>
+      <strong>Skills:</strong> Google Ads, SEO, Analytics.<br>
+      <strong>Company:</strong> BrandNest Media.
+    </div>
+  </div>
+
+  <!-- Job 6 -->
+  <div class="job-card" onclick="toggleDetails(this)">
+    <div class="job-title">Python Developer <span class="badge">Hiring Fast</span></div>
+    <div class="meta">📍 Pune | 🕒 3+ years | 💰 ₹ 9,00,000 - 12,00,000</div>
+    <div class="meta">🗓️ 1 day ago</div>
+    <div class="job-details">
+      <strong>Description:</strong> Develop backend applications and APIs using Django.<br>
+      <strong>Skills:</strong> Python, Django, REST APIs.<br>
+      <strong>Company:</strong> CodeWave Technologies.
+    </div>
+  </div>
+
+  <!-- Job 7 -->
+  <div class="job-card" onclick="toggleDetails(this)">
+    <div class="job-title">Technical Support Associate</div>
+    <div class="meta">📍 Mumbai | 🕒 0-1 year(s) | 💰 ₹ 2,50,000 - 3,20,000</div>
+    <div class="meta">🗓️ 5 days ago</div>
+    <div class="job-details">
+      <strong>Description:</strong> Provide L1 tech support for global customers.<br>
+      <strong>Skills:</strong> Troubleshooting, Communication, Basic Networking.<br>
+      <strong>Company:</strong> QuickAssist Services.
+    </div>
+  </div>
+
+  <!-- Job 8 -->
+  <div class="job-card" onclick="toggleDetails(this)">
+    <div class="job-title">Graphic Designer <span class="badge">Remote</span></div>
+    <div class="meta">📍 Remote | 🕒 2 years | 💰 ₹ 3,60,000 - 4,80,000</div>
+    <div class="meta">🗓️ 1 week ago</div>
+    <div class="job-details">
+      <strong>Description:</strong> Design digital creatives for social and ad campaigns.<br>
+      <strong>Skills:</strong> Adobe Photoshop, Illustrator, Canva.<br>
+      <strong>Company:</strong> Creativo Studio.
+    </div>
+  </div>
+</div>
+
+
+      <!-- Add more job cards the same way -->
+    </div>
+  </div>
+
+  <script>
+    const salarySlider = document.getElementById('salaryRange');
+    const salaryValue = document.getElementById('salaryValue');
+
+    salarySlider.addEventListener('input', () => {
+      salaryValue.textContent = salarySlider.value;
+    });
+
+    function clearAll() {
+      document.getElementById('profile').value = '';
+      document.getElementById('location').value = '';
+      document.getElementById('wfh').checked = false;
+      document.getElementById('parttime').checked = false;
+      document.getElementById('experience').value = '';
+      document.getElementById('salaryRange').value = 0;
+      document.getElementById('salaryValue').textContent = 0;
+    }
+
+    function toggleDetails(card) {
+      card.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
